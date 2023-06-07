@@ -60,15 +60,70 @@ const maxPoints = {
   },
 };
 
-// Set placeholders for the Grades
-// document.getElementById(
-//   `result-${dataGroupName}-student-${studentId}`
-// ).innerText = 0; // set grades to 0
-// document.getElementById(
-//   `result-${dataGroupName}-student-${studentId}`
-// ).innerText = 0; // set grades to 0
 
-// collect points from the input fields from HTML
+// function removeRow(row) {
+//   row.parentNode.removeChild(row);
+// }
+
+  function deleteRow(currElement) {
+    var table = document.getElementById('group1');
+    var lastRowIndex = table.rows.length - 1;
+    document.getElementById('group1').deleteRow(lastRowIndex);
+  }
+
+function insRow() {
+  let x = document.getElementById('group1');
+  // deep clone the targeted row
+  let new_row = x.rows[3].cloneNode(true);
+  // get the total number of rows
+  let len = x.rows.length - 1;
+
+  // update the name of the inputs
+  for (let i = 0; i < new_row.cells.length; i++) {
+    let input = new_row.cells[i].querySelector('input');
+    if (input) {
+      //set update student number
+      let oldName = input.name;
+      let newName = oldName.replace('student-2', 'student-' + len);
+      input.name = newName;
+      input.value = '';
+    }
+
+    document.querySelectorAll('div[id^="result"]');
+
+    let divId = new_row.cells[i].querySelector(
+      'div[id^="result-group1-student-"]'
+    );
+    if (divId) {
+      //set update student result number
+      let oldName = divId.id;
+      let newName = oldName.replace(
+        'result-group1-student-2',
+        'result-group1-student-' + len
+      );
+      divId.id = newName;
+    }
+  }
+
+  // append the new row to the tbody element
+  x.querySelector('tbody').appendChild(new_row);
+
+  // store the values of the table in localStorage
+  var tableValues = localStorage.getItem('tableValues');
+  if (tableValues) {
+    tableValues = JSON.parse(tableValues);
+  } else {
+    tableValues = [];
+  }
+
+  tableValues.push(new_row);
+  localStorage.setItem('tableValues', JSON.stringify(tableValues));
+}
+
+
+
+
+// Function to collect points from the input fields from HTML
 const getPoints = function () {
   const inputs = document.querySelectorAll('.grade-input'); // collect all inputs from HTML
   const points = {}; // create Object placeholder
@@ -100,14 +155,22 @@ const getPoints = function () {
     points[dataGroup][studentId][taskId] = input.value; // Create Object
   }
 
+  // empty the values of the table in localStorage, before setting the updated values
+  var tableValues = [];
+  localStorage.setItem('tableValues', JSON.stringify(tableValues));
+
+  tableValues.push(points);
+  localStorage.setItem('tableValues', JSON.stringify(tableValues));
+
   //   console.log(points);
   return points; // return object to calcGrades
 };
 
+// Function to calculate the Grades. This is where the code starts
 // eslint-disable-next-line no-unused-vars
 const calcGrades = async function (arr, set1weight, set2weight) {
   let arrPts = {};
-
+//BUG calcGrades does not calculate newly added rows. Likely since it is considered another table?
   set1weight = set1weight || 0.4; // set1 weight to default 0.4 if no argument in function call
   set2weight = set2weight || 0.6;
 
@@ -196,11 +259,14 @@ const calcGrades = async function (arr, set1weight, set2weight) {
   return;
 };
 
+// Function to reset points
 // eslint-disable-next-line no-unused-vars
 function resetGrades() {
   // reset the HTML inputs and Object
   console.log('Reset');
   calcGrades.arrPts = {}; // reset object
+  var tableValues = []; // reset localStorage
+  localStorage.setItem('tableValues', []); // reset localStorage
   const results = document.querySelectorAll('div[id^="result"]');
   for (const result of results) {
     // reset result text in grades
@@ -213,6 +279,8 @@ function resetGrades() {
   }
 }
 
+// TODO Add save data function to save after all inputs. What is best practice?
+// Function to Export data to JSON
 // eslint-disable-next-line no-unused-vars
 function saveData() {
   // Export Object to JSON

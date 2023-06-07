@@ -23,7 +23,9 @@
   <h1>Grades</h1>
 </header>
 <main>
-  <table>
+  <form class="container">
+<!-- <div class="container"> -->
+  <table id="group1">
     <thead>
       <tr>
         <th>Group 1</th>
@@ -69,7 +71,11 @@
       ...
     </tbody>
   </table>
-  <table>
+  <input type="button" id="delStudent" value="Delete" onclick="deleteRow(this)"/>
+  <input type="button" id="addStudent" value="Add" onclick="insRow()"/>
+  <!-- <button type="button" onclick="addRow()">Add Student</button> -->
+  <!-- <button type="button" onclick="removeRow(this.parentElement)">Remove Student</button> -->
+  <table id="group2">
     <thead>
       <tr>
         <th>Group 2</th>
@@ -110,6 +116,8 @@
     </tbody>
   </table>
   <script src="./scripts/script.js"></script>
+<!-- </div> -->
+  </form>
 </main>
 </body>
 </html>
