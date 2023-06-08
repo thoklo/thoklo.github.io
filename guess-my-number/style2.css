@@ -33,6 +33,7 @@ main {
   justify-content: space-around;
 }
 
+/* mobile */
 @media screen and (max-width: 768px) {
   header {
     height: 100vh;
@@ -56,6 +57,7 @@ main {
   }
 }
 
+/* tablet */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   header {
     height: 100vh;
@@ -79,6 +81,33 @@ main {
   }
 }
 
+/* iPad Pro 10.5-inch */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  header {
+    height: 100vh;
+    border-bottom: none;
+  }
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+  .left,
+  .right {
+    width: 50%;
+  }
+
+  .guess,
+  .btn {
+    width: 100%;
+  }
+
+}
+
+/* monitor */
 @media screen and (min-width: 1024px) {
   header {
     height: 100vh;
