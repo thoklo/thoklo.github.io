@@ -265,5 +265,69 @@ h1 {
   .label-score {
     margin-bottom: 2rem;
   }
-} 
+}
 
+@media only screen and (max-width: 480px) {
+  .guess {
+    font-size: 2.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    font-size: 1.4rem;
+    padding: 1.2rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .guess {
+    font-size: 3rem;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    font-size: 1.6rem;
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .guess {
+    font-size: 3.5rem;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .btn {
+    font-size: 1.8rem;
+    padding: 1.8rem 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .guess {
+    font-size: 4rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .btn {
+    font-size: 2rem;
+    padding: 2rem 3rem;
+  }
+}
+
+@media only screen and (min-width: 1281px) {
+  .guess {
+    font-size: 5rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .btn {
+    font-size: 2rem;
+    padding: 2rem 3rem;
+  }
+}
