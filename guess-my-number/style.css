@@ -29,81 +29,26 @@ main {
   height: 65vh;
   color: #eee;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 
-@media screen and (max-width: 768px) {
-  header {
-    height: 100vh;
-    border-bottom: none;
-  }
-
-  main {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-
-  .left,
-  .right {
-    width: 100%;
-  }
-
-  .guess,
-  .btn {
-    width: 100%;
-  }
+.left {
+  width: 100%;
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  header {
-    height: 100vh;
-    border-bottom: none;
-  }
-
-  main {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-
-  .left,
-  .right {
-    width: 50%;
-  }
-
-  .guess,
-  .btn {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  header {
-    height: 100vh;
-    border-bottom: none;
-  }
-
-  main {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .left,
-  .right {
-    width: 50%;
-  }
-
-  .guess,
-  .btn {
-    width: 100%;
-  }
+.right {
+  width: 100%;
+  max-width: 52rem;
+  font-size: 2rem;
 }
 
 /* ELEMENTS STYLE */
-
 h1 {
   font-size: 4rem;
   text-align: center;
@@ -147,7 +92,8 @@ h1 {
   color: inherit;
   font-size: 5rem;
   padding: 2.5rem;
-  width: 25rem;
+  width: 100%;
+  max-width: 25rem;
   text-align: center;
   display: block;
   margin-bottom: 3rem;
@@ -158,7 +104,7 @@ h1 {
   background-color: #eee;
   color: #222;
   font-size: 2rem;
-    font-family: inherit;
+  font-family: inherit;
   padding: 2rem 3rem;
   cursor: pointer;
 }
@@ -175,3 +121,149 @@ h1 {
 .label-score {
   margin-bottom: 2rem;
 }
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 768px) {
+  header {
+    height: 25vh;
+  }
+  
+  main {
+    height: 75vh;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  .number {
+    font-size: 4rem;
+    width: 10rem;
+    padding: 2rem 0rem;
+  }
+  
+  .between {
+    font-size: 1.2rem;
+  }
+  
+  .again {
+    font-size: 1.2rem;
+  }
+  
+  .guess {
+    font-size: 3rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    font-size: 1.6rem;
+    padding: 1.5rem 2rem;
+  }
+  
+  .message {
+    margin-bottom: 4rem;
+    height: 2rem;
+  }
+  
+  .label-score {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  header {
+    height: 20vh;
+  }
+  
+  main {
+    height: 80vh;
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+  }
+  
+  .number {
+    font-size: 5rem;
+    width: 12rem;
+    padding: 2.5rem 0rem;
+  }
+  
+  .between {
+    font-size: 1.2rem;
+  }
+  
+  .again {
+    font-size: 1.2rem;
+  }
+  
+  .guess {
+    font-size: 4rem;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .btn {
+    font-size: 1.8rem;
+    padding: 1.8rem 2.5rem;
+  }
+  
+  .message {
+    margin-bottom: 5rem;
+    height: 2.5rem;
+  }
+  
+  .label-score {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  header {
+    height: 15vh;
+  }
+  
+  main {
+    height: 85vh;
+  }
+  
+  h1 {
+    font-size: 4rem;
+  }
+  
+  .number {
+    font-size: 6rem;
+    width: 15rem;
+    padding: 3rem 0rem;
+  }
+  
+  .between {
+    font-size: 1.4rem;
+  }
+  
+  .again {
+    font-size: 1.4rem;
+  }
+  
+  .guess {
+    font-size: 5rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .btn {
+    font-size: 2rem;
+    padding: 2rem 3rem;
+  }
+  
+  .message {
+    margin-bottom: 8rem;
+    height: 3rem;
+  }
+  
+  .label-score {
+    margin-bottom: 2rem;
+  }
+} 
+
